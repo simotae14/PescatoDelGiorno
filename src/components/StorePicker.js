@@ -4,8 +4,8 @@ class StorePicker extends Component {
   render() {
     return (
       <form className="store-selector">
-        <h2>Per Favore Inserire Un Negozio</h2>
-        <input type="text" required placeholder="Nome Negozio" />
+        <h2>Inserire il Nome dello Store</h2>
+        <input type="text" required placeholder="Nome Store" />
         <button type="submit">Visita lo Store -></button>
       </form>
     );
