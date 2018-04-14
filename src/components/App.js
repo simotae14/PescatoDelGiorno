@@ -26,14 +26,32 @@ class App extends React.Component {
 		this.setState({
 			pesci: pesciEsempio
 		});
-	}
+	};
+	// handler per aggiungere un pesce all'ordine
+	addToOrder = (key) => {
+		// 1. fare una copia dello state
+		const ordine = { ...this.state.ordine };
+		// 2. o aggiungo un elemento all'ordine, o aggiorno il suo numero nell'ordine
+		ordine[key] = ordine[key] + 1 || 1;
+		// 3. chiamo il setState per aggiornare lo status dell'oggetto
+		this.setState({
+			ordine
+		});
+	};
 	render() {
 		return (
 			<div className="catch-of-the-day">
 				<div className="menu">
 					<Header tagline="Fresco Del Giorno" />
 					<ul className="fishes">
-						{Object.keys(this.state.pesci).map(key => <Fish key={key} dettagli={this.state.pesci[key]} />)}
+						{Object.keys(this.state.pesci).map(key => (
+							<Fish
+								key={key}
+								index={key}
+								dettagli={this.state.pesci[key]}
+								addToOrder={this.addToOrder}
+							/>
+						))}
 					</ul>
 				</div>
 				<Order />
