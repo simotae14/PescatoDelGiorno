@@ -4,7 +4,7 @@ const pesci = {
 		nome: 'Halibut del Pacifico',
 		immagine: '/images/hali.jpg',
 		desc:
-      'Tutti amano il pesce bianco. Lo tagliamo della dimensione che ti serve e lo spediamo.',
+      'Tutti amano il pesce bianco. Lo spediamo.',
 		prezzo: 1724,
 		status: 'available'
 	},
@@ -22,7 +22,7 @@ const pesci = {
 		nome: 'Capesante',
 		immagine: '/images/scallops.jpg',
 		desc:
-      'Grandi, dolci e tenere. Vere capesante a secco delle acque ghiacciate dell\'Alaska. Circa 8-10 per pound',
+      'Grandi, dolci e tenere. Vere capesante delle acque ghiacciate dell\'Alaska. Circa 8-10 per pound',
 		prezzo: 1684,
 		status: 'unavailable'
 	},
@@ -31,7 +31,7 @@ const pesci = {
 		nome: 'Mahi Mahi',
 		immagine: '/images/mahi.jpg',
 		desc:
-      'Pesce dalle carni magre, dal sapore molto dolce e consistenza abbastanza soda con scaglie grandi e umide.',
+      'Pesce magro, dal sapore dolce e consistenza soda con scaglie grandi e umide.',
 		prezzo: 1129,
 		status: 'available'
 	},
@@ -40,7 +40,7 @@ const pesci = {
 		nome: 'Granchio Reale',
 		immagine: '/images/crab.jpg',
 		desc:
-      'Sgusciali e goditeli con calma con una delle nostre salse cocktail',
+      'Sguscialo e godilo con calma con una delle salse cocktail',
 		prezzo: 4234,
 		status: 'available'
 	},
@@ -49,7 +49,7 @@ const pesci = {
 		nome: 'Salmone dell\'Atlantico',
 		immagine: '/images/salmon.jpg',
 		desc:
-      'Questo salmone grasso e oleoso è davvero il re del mare. Cuocili, griglialo, oppure al forno...sarà sempre buono!',
+      'Questo salmone è il re del mare. Cotto, grigliato o al forno.. buono!',
 		prezzo: 1453,
 		status: 'available'
 	},

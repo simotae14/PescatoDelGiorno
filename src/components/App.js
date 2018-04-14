@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
-
+import Fish from './Fish';
 // recupero i pesci esempio
 import pesciEsempio from '../sample-fishes';
 
@@ -32,6 +32,9 @@ class App extends React.Component {
 			<div className="catch-of-the-day">
 				<div className="menu">
 					<Header tagline="Fresco Del Giorno" />
+					<ul className="fishes">
+						{Object.keys(this.state.pesci).map(key => <Fish key={key} dettagli={this.state.pesci[key]} />)}
+					</ul>
 				</div>
 				<Order />
 				<Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes} />
