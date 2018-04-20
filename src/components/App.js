@@ -3,6 +3,7 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 import Fish from './Fish';
+import base from '../base';
 // recupero i pesci esempio
 import pesciEsempio from '../sample-fishes';
 
@@ -11,6 +12,16 @@ class App extends React.Component {
 		pesci: {},
 		ordine: {}
 	};
+	componentDidMount() {
+		const { params } = this.props.match;
+		this.ref = base.syncState(`${params.storeId}/pesci`, {
+			context: this,
+			state: 'pesci'
+		});
+	}
+	componentWillUnmount() {
+		base.removeBinding(this.ref);
+	}
 	addFish = pesce => {
 		// 1. Fai copia dello stato esistente
 		const pesci = {...this.state.pesci};
