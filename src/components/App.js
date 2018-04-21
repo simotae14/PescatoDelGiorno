@@ -14,10 +14,18 @@ class App extends React.Component {
 	};
 	componentDidMount() {
 		const { params } = this.props.match;
+		// anzitutto risetto il nostro localStorage
+		const localStorageRef = localStorage.getItem(params.storeId);
+		if(localStorageRef) {
+			this.setState({ ordine: JSON.parse(localStorageRef) })
+		}
 		this.ref = base.syncState(`${params.storeId}/pesci`, {
 			context: this,
 			state: 'pesci'
 		});
+	}
+	componentDidUpdate() {
+		localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.ordine));
 	}
 	componentWillUnmount() {
 		base.removeBinding(this.ref);

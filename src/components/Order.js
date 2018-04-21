@@ -6,8 +6,10 @@ class Order extends React.Component {
     const pesce = this.props.pesci[key];
     // numero di pesci di quel tipo
     const cont = this.props.ordine[key];
-    const isAvailable = pesce.status === 'available';
-    if(!isAvailable) {
+    const isAvailable = pesce && pesce.status === 'available';
+    // Assicurarsi che il pesce venga caricato prima di continuare
+    if (!pesce) return null;
+    if (!isAvailable) {
       return (
         <li key={key}>
           Mi spiace il { pesce ? pesce.nome : 'pesce'} non è più disponibile
@@ -16,8 +18,8 @@ class Order extends React.Component {
     }
     return (
       <li key={key}>
-        {cont} kg di {pesce.nome}
-        {formatPrice(cont * pesce.prezzo)}
+        <span>{cont} kg di {pesce.nome}</span>
+        <span className="price">{formatPrice(cont * pesce.prezzo)}</span>
       </li>
     );
   }
@@ -37,11 +39,13 @@ class Order extends React.Component {
 		return (
 			<div className="order-wrap">
 				<h2>Ordine</h2>
-				<ul>{orderIds.map(this.renderOrder)}</ul>
-				<div className="total">
-          Totale:
-					<strong>{formatPrice(totale)}</strong>
-				</div>
+        <ul className="order">
+        {orderIds.map(this.renderOrder)}
+          <li className="total">
+            <strong>Totale:</strong>
+            {formatPrice(totale)}
+          </li>
+        </ul>
 			</div>
 		);
 	}
