@@ -32,7 +32,7 @@ class App extends React.Component {
 	}
 	addFish = pesce => {
 		// 1. Fai copia dello stato esistente
-		const pesci = {...this.state.pesci};
+		const pesci = { ...this.state.pesci };
 		// 2. aggiungo il nuovo pesce ai pesci usando come key un id creato con data
 		pesci[`pesce${Date.now()}`] = pesce;
 		// 3. aggiorno lo stato
@@ -42,10 +42,18 @@ class App extends React.Component {
 	};
 	updateFish = (key, updatedFish) => {
 		// 1. fare una copia dello state corrente
-		const pesci = {...this.state.pesci};
+		const pesci = { ...this.state.pesci };
 		// 2. aggiorna lo State
 		pesci[key] = updatedFish;
 		// 3. setta sta nuova copia di pesci allo state
+		this.setState({ pesci });
+	}
+	deleteFish = key => {
+		// 1. fare una copia dello state corrente
+		const pesci = { ...this.state.pesci };
+		// 2. aggiorno lo State
+		pesci[key] = null;
+		// 3. e aggiorno lo State Generale
 		this.setState({ pesci });
 	}
 	loadSampleFishes = () => {
@@ -65,6 +73,18 @@ class App extends React.Component {
 			ordine
 		});
 	};
+	// handler per rimuovere un pesce dall'ordine
+	removeFromOrder = (key) => {
+		// 1. fare una copia dello state
+		const ordine = { ...this.state.ordine };
+		// 2. rimuovere l'elemento dall'ordine
+		delete ordine[key];
+		// 3. chiamo il setState per aggiornare lo status dell'oggetto
+		this.setState({
+			ordine
+		});
+	};
+
 	render() {
 		return (
 			<div className="catch-of-the-day">
@@ -84,10 +104,12 @@ class App extends React.Component {
 				<Order
 					pesci={this.state.pesci}
 					ordine={this.state.ordine}
+					removeFromOrder={this.removeFromOrder}
 				/>
 				<Inventory
 					addFish={this.addFish}
 					updateFish={this.updateFish}
+					deleteFish={this.deleteFish}
 					loadSampleFishes={this.loadSampleFishes}
 					pesci={this.state.pesci}
 				/>

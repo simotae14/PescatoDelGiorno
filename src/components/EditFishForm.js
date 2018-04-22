@@ -48,7 +48,7 @@ class EditFishForm extends React.Component {
                     placeholder="Immagine"
                     onChange={this.handleChange}
                 />
-                <button type="submit">+ Aggiungi Pesce</button>
+                <button onClick={() => { this.props.deleteFish(this.props.index) }}>Cancella Pesce</button>
             </div>
         );
     }
